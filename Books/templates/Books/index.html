@@ -1,0 +1,34 @@
+{% extends 'Books/base.html' %}
+
+
+
+{% block body %}
+    <div class="container-fluid">
+        {% if my_books %}
+            <h2>Your books</h2>
+            <div class="row">
+                {% with my_books as list %}
+                    {% include 'Books/book-list.html' %}
+                {% endwith %}
+            </div>
+        {% endif %}
+
+        {% if available_books %}
+            <h3> Available books </h3>
+            <div class="row">
+                {% with available_books as list %}
+                    {% include 'Books/book-list.html' %}
+                {% endwith %}
+            </div>
+        {% endif %}
+
+        {% if not_available_books %}
+            <h3> Not available books </h3>
+            <div class="row">
+                {% with not_available_books as list %}
+                    {% include 'Books/book-list.html' %}
+                {% endwith %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

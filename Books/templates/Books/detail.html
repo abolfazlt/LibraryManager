@@ -1,0 +1,69 @@
+{% extends 'Books/base.html' %}
+
+{% block title %}
+    Book details
+{% endblock %}
+
+
+{% block body %}
+    <div class="container-fluid songs-container">
+
+        <div class="row">
+
+            <!-- Left Book Logo -->
+            <div class="col-sm-4 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <a href="{% url 'Books:detail' book.id %}">
+                            {% if book.book_logo %}
+                                <img src="{{ book.book_logo.url }}" class="img-responsive">
+                            {% else %}
+                                <h3>No image to display</h3>
+                            {% endif %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Book Info -->
+            <div class="col-sm-8 col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <h2>{{ book.title }}</h2>
+                        <h4>{{ book.author }}</h4> <br>
+                        {% if error_message %}
+                            <p><strong>{{ error_message }}</strong></p>
+                        {% endif %}
+
+                        <p> This book is taken by
+                            {% if book.taken_by %}
+                                <span class="text-danger"> <strong>{{ book.taken_by }}.</strong> </span>
+                            {% else %}
+                                <span class="text-success"> <strong>no one.</strong></span>
+                            {% endif %}
+                        </p>
+
+                        {% if book.taken_by %}
+                            {% if book.taken_by == user.username %}
+                                <a href="{% url 'Books:book-return' book.id %}" class="btn btn-danger"> Return Book </a>
+                            {% endif %}
+                        {% else %}
+                            <a href="{% url 'Books:book-borrow' book.id %}" class="btn btn-success">Borrow</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
