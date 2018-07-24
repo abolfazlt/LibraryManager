@@ -18,4 +18,4 @@ I hope you enjoy.
 
 
 run docker:
-docker run -d --name library-manger --restart always --net host -v /home/kharmagas/SourceCode/Github/db.sqlite3:/home/library/db.sqlite3 library-manager
+docker run -d --name library-manger --restart always --net host -v /home/kharmagas/SourceCode/Github/db.sqlite3:/home/library/db.sqlite3 -v /mnt/storage/library/media:/home/library/media library-manager

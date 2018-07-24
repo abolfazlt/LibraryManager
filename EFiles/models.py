@@ -6,6 +6,7 @@ class EFile(models.Model):
     file_name = models.CharField(max_length=100)
     file_author = models.CharField(max_length=100)
     file_content = models.FileField(max_length=500, default='')
+    file_logo = models.FileField(max_length=500, default='')
 
     def get_absolute_url(self):
         return reverse('EFiles:detail', kwargs={'pk': self.pk})

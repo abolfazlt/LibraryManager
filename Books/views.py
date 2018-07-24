@@ -105,10 +105,12 @@ def update_book(request, book_id):
                 book.author = form.cleaned_data['author']
                 book.book_logo = form.cleaned_data['book_logo']
                 book.taken_by = form.cleaned_data["taken_by"]
+                book.description = form.cleaned_data["description"]
                 book.save()
                 return redirect('Books:detail', book.id)
         else:
-            data = {'title': book.title, 'author': book.author, 'book_logo': book.book_logo, 'taken_by': book.taken_by}
+            data = {'title': book.title, 'author': book.author, 'book_logo': book.book_logo,
+                    'description': book.description, 'taken_by': book.taken_by}
             form = BookForm(initial=data)
 
         context = {'form': form}

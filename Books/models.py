@@ -7,6 +7,7 @@ class Book(models.Model):
     author = models.CharField(max_length=100)
     book_logo = models.FileField(max_length=500, default='')
     taken_by = models.CharField(max_length=300)  # User's username here if book is taken
+    description = models.TextField(blank=True)
 
     def get_absolute_url(self):
         return reverse('Books:detail', kwargs={'pk': self.pk})

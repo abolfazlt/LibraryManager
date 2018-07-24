@@ -2,12 +2,7 @@
     <div class="col-sm-4 col-md-2 ">
         <div class="thumbnail">
             <a href="{{ efile.file_content.url }}">
-              {% if efile.file_content.name|slice:"-4:"|lower == '.pdf' %}
-                  {% load static %}
-                  <img src="{% static 'EFiles/images/AdobePDFlogo.jpg' %}" class="img-responsive"/>
-              {% else %}
-                  <h2>Download</h2>
-              {% endif %}
+                <img src="{{ efile.file_logo.url }}" class="img-responsive">
             </a>
             <div class="caption">
                 <h2>{{ efile.file_name }}</h2>

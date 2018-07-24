@@ -91,10 +91,12 @@ def update_efile(request, efile_id):
                 efile.file_name = form.cleaned_data['file_name']
                 efile.file_author = form.cleaned_data['file_author']
                 efile.file_content = form.cleaned_data['file_content']
+                efile.file_logo = form.cleaned_data['file_logo']
                 efile.save()
                 return redirect('EFiles:detail', efile.id)
         else:
-            data = {'file_name': efile.file_name, 'file_author': efile.file_author, 'file_content': efile.file_content}
+            data = {'file_name': efile.file_name, 'file_author': efile.file_author, 'file_content': efile.file_content,
+                    'file_logo': efile.file_logo}
             form = EFileForm(initial=data)
 
         context = {'form': form}

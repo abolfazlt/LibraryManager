@@ -10,8 +10,7 @@ class BookForm(forms.ModelForm):
 
     class Meta:
         model = Book
-        fields = ['title', 'author', 'book_logo']
-
+        fields = ['title', 'author', 'book_logo', 'description']
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
