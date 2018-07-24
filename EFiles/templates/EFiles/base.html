@@ -33,13 +33,13 @@
         <!--  Items -->
         <div class="collapse navbar-collapse" id="topnavbar">
             <ul class="nav navbar-nav">
-                <li class="Active">
+                <li>
                     <a href="{% url 'Books:index' %}">
                         <span class="glyphicon glyphicon-book" aria-hidden="true"></span> &nbsp;
                         Books
                     </a>
                 </li>
-                <li>
+                <li class="Active">
                     <a href="{% url 'EFiles:index' %}">
                         <span class="glyphicon glyphicon-book" aria-hidden="true"></span> &nbsp;
                         eFiles Collection
@@ -49,7 +49,7 @@
 
 
             <!-- Search bar -->
-            <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'Books:search' %}">
+            <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'EFiles:search' %}">
                 <div class="form-group">
                     <input type="text" class="form-control" name="q" value="">
                 </div>
@@ -60,14 +60,14 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_superuser %}
                     <li class="">
-                        <a href="{% url 'Books:add_book' %}">
+                        <a href="{% url 'EFiles:add_efile' %}">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> &nbsp;
-                            Add Book
+                            Add eFile
                         </a>
                     </li>
                 {% endif %}
                 <li class="">
-                    <a href="{% url 'Books:logout_user' %}">
+                    <a href="{% url 'EFiles:logout_user' %}">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span> &nbsp;
                         Logout
                     </a>
