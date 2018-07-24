@@ -14,7 +14,12 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <a href="{{ efile.file_content.url }}">
-                            Download
+                          {% if efile.file_content.name|slice:"-4:"|lower == '.pdf' %}
+                              {% load static %}
+                              <img src="{% static 'EFiles/images/AdobePDFlogo.jpg' %}" class="img-responsive"/>
+                          {% else %}
+                              <h2>Download</h2>
+                          {% endif %}
                         </a>
                     </div>
                 </div>
@@ -24,7 +29,8 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
 
-                        <h2>{{ efile.file_name }}</h2> <br>
+                        <h2>{{ efile.file_name }}</h2>
+                        <h4>{{ efile.file_author }}</h4> <br>
                         {% if error_message %}
                             <p><strong>{{ error_message }}</strong></p>
                         {% endif %}

@@ -89,11 +89,12 @@ def update_efile(request, efile_id):
             form = EFileForm(request.POST or None, request.FILES or None)
             if form.is_valid():
                 efile.file_name = form.cleaned_data['file_name']
+                efile.file_author = form.cleaned_data['file_author']
                 efile.file_content = form.cleaned_data['file_content']
                 efile.save()
                 return redirect('EFiles:detail', efile.id)
         else:
-            data = {'file_name': efile.file_name, 'file_content': efile.file_content}
+            data = {'file_name': efile.file_name, 'file_author': efile.file_author, 'file_content': efile.file_content}
             form = EFileForm(initial=data)
 
         context = {'form': form}
@@ -112,7 +113,8 @@ def search(request):
         query = request.GET.get("q")
         if query:
             efiles = EFile.objects.all().filter(
-                Q(file_name__icontains=query)
+                Q(file_name__icontains=query) |
+                Q(file_author__icontains=query)
             ).distinct()
 
             return render(request, 'EFiles/index.html',
