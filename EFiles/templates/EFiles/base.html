@@ -10,7 +10,7 @@
     {% load staticfiles %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{% static 'Books/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'EFiles/style.css' %}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
             integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
@@ -33,13 +33,13 @@
         <!--  Items -->
         <div class="collapse navbar-collapse" id="topnavbar">
             <ul class="nav navbar-nav">
-                <li class="Active">
+                <li>
                     <a href="{% url 'Books:index' %}">
                         <span class="glyphicon glyphicon-book" aria-hidden="true"></span> &nbsp;
                         Books
                     </a>
                 </li>
-                <li>
+                <li class="Active">
                     <a href="{% url 'EFiles:index' %}">
                         <span class="glyphicon glyphicon-book" aria-hidden="true"></span> &nbsp;
                         eFiles Collection
@@ -49,7 +49,7 @@
 
 
             <!-- Search bar -->
-            <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'Books:search' %}">
+            <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'EFiles:search' %}">
                 <div class="form-group">
                     <input type="text" class="form-control" name="q" value="">
                 </div>
@@ -60,14 +60,14 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_superuser %}
                     <li class="">
-                        <a href="{% url 'Books:add_book' %}">
+                        <a href="{% url 'EFiles:add_efile' %}">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> &nbsp;
-                            Add Book
+                            Add eFile
                         </a>
                     </li>
                 {% endif %}
                 <li class="">
-                    <a href="{% url 'Books:logout_user' %}">
+                    <a href="{% url 'EFiles:logout_user' %}">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span> &nbsp;
                         Logout
                     </a>
