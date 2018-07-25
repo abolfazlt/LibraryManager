@@ -8,7 +8,7 @@ class EFileForm(forms.ModelForm):
 
     class Meta:
         model = EFile
-        fields = ['file_name', 'file_author', 'file_content', 'file_logo']
+        fields = ['file_name', 'file_author','description', 'file_content', 'file_logo']
 
 
 class UserForm(forms.ModelForm):
