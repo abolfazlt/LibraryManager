@@ -96,7 +96,7 @@ def update_efile(request, efile_id):
                 efile.save()
                 return redirect('EFiles:detail', efile.id)
         else:
-            data = {'file_name': efile.file_name, 'file_author': efile.file_author, 'description': book.description,
+            data = {'file_name': efile.file_name, 'file_author': efile.file_author, 'description': efile.description,
                     'file_content': efile.file_content, 'file_logo': efile.file_logo}
             form = EFileForm(initial=data)
 
