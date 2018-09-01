@@ -1,0 +1,24 @@
+{% extends 'Books/base.html' %}
+
+
+
+{% block body %}
+    <div class="container-fluid">
+        {% if reqBooks %}
+            <h2>requested Books List:</h2>
+            <div class="row">
+                {% for book in reqBooks %}
+                     <div class="col-sm-4 col-md-2 ">
+                         <div class="thumbnail">
+                             <div class="caption">
+                                <h2>{{ book.title }}</h2>
+                                <h4>{{ book.author }}</h4>
+
+                              </div>
+                        </div>
+                     </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

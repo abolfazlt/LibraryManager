@@ -7,7 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, JsonResponse
 from django.db.models import Q
 from .forms import *
-from .models import Book
+from .models import Book , RequestedBooks
+from django.contrib.auth.models import User
 
 
 def index(request):
@@ -47,8 +48,8 @@ def register(request):
                 available_books = Book.objects.filter(taken_by='')
                 not_available_books = Book.objects.filter(~Q(taken_by=user.username), ~Q(taken_by=''))
                 return render(request, 'Books/index.html',
-                              {'my_books': my_books, 'user': user, 'available_books': available_books,
-                               'not_available_books': not_available_books})
+                            {'my_books': my_books, 'user': user, 'available_books': available_books,
+                            'not_available_books': not_available_books})
 
     return render(request, 'Books/registration_form.html', {'form': form})
 
@@ -162,3 +163,20 @@ def search(request):
                            'not_available_books': not_available_books})
         else:
             return redirect('Books:index')
+
+def request_a_book(request):
+    if request.method=='GET':
+        requested_book_form=RequestedBooksForm()
+    else:
+        requested_book_form=RequestedBooksForm(request.POST)
+        if requested_book_form.is_valid():
+            instance=requested_book_form.save(False)
+            instance.save()
+            return redirect('Books:index')
+    return render(request, 'Books/request_book.html' ,context={'form':requested_book_form})
+
+def requested_Books(request):
+    reqBooks=RequestedBooks.objects.all()
+    return render(request,'Books/requested_Books.html', {'reqBooks': reqBooks})
+
+

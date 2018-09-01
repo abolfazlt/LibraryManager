@@ -60,9 +60,22 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_superuser %}
                     <li class="">
+                        <a href="{% url 'Books:requested_Books' %}">
+                            <span class="glyphicon glyphicon" aria-hidden="true"></span> &nbsp;
+                            Requested Books
+                        </a>
+                    </li>
+                    <li class="">
                         <a href="{% url 'Books:add_book' %}">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> &nbsp;
                             Add Book
+                        </a>
+                    </li>
+                 {% else %}
+                     <li class="">
+                        <a href="{% url 'Books:request_a_book' %}">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> &nbsp;
+                            Request a Book
                         </a>
                     </li>
                 {% endif %}
