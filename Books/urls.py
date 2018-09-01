@@ -1,7 +1,8 @@
-from django.conf.urls import url
+from django.conf.urls import url , include
 
-from Books.models import Book
+from Books.models import Book , RequestedBooks
 from . import views
+from django.contrib.auth import views as auth_views
 
 app_name = 'Books'
 
@@ -24,6 +25,12 @@ urlpatterns = [
     # /books/add
     url(r'^add/$', views.add_book, name='add_book'),
 
+    #/books/request_a_book
+     url(r'^request_a_book/$', views.request_a_book, name='request_a_book'),
+
+    #/books/requestedBooks
+    url(r'^requested_Books/$', views.requested_Books, name='requested_Books'),
+
     # /books/update/2/
     url(r'^update/(?P<book_id>[0-9]+)/$', views.update_book, name='book-update'),
 
@@ -37,6 +44,14 @@ urlpatterns = [
     url(r'^(?P<book_id>[0-9]+)/borrow/$', views.borrow_book, name='book-borrow'),
 
     # /books/search/ (text goes here) /
-    url(r'^search/$', views.search, name='search'),
+     url(r'^search/$', views.search, name='search'),
+    #
+    # url('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+
+
+
+
+
+
 
 ]
